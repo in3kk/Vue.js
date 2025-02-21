@@ -8,23 +8,29 @@
 <body>
     <div id="app">
         <app-header v-bind:propsdata="message"></app-header>
+        <app-content v-bind:propsdata="num"></app-content>
     </div>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://unpkg.com/vue@2.7.16/dist/vue.js"></script>
     <script src="https://unpkg.com/vuex@2.5.0/dist/vuex.js"></script>
     <script>
         var appHeader = {
-            template: '<h1>header</h1>',
+            template: '<h1>{{ propsdata }}</h1>',
             props: ['propsdata']
         }
-
+        var appContent = {
+            template: '<div>{{ propsdata }}</div>',
+            props: ['propsdata']
+        }
         new Vue({
             el: '#app',
             components: {
-                'app-header' : appHeader
+                'app-header' : appHeader,
+                'app-content' : appContent
             },
             data: {
-                message: 'hi'
+                message: 'hi',
+                num: 10
             }
         });
     </script>
