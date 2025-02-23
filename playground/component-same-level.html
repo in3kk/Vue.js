@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <app-header v-bind:propsdata="num"></app-header>
+        <!-- 따로 특별히 명시하지 않아도 인자가 암묵적으로 전달된다. -->
+        <app-content v-on:pass="passNumber"></app-content>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@2.7.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@2.5.0/dist/vuex.js"></script>
+    <script>
+        var appHeader = {
+            template: '<div>{{ propsdata }}</div>',
+            props: ['propsdata']
+        }
+        var appContent = {
+            template: '<div>content<button v-on:click="passNum">pass</button></div>',
+            methods:{
+                passNum: function(){
+                    this.$emit('pass',10);
+                }
+            }
+        }
+        new Vue({
+            el: '#app',
+            components: {
+                'app-header': appHeader,
+                'app-content': appContent
+            },
+            methods:{
+                passNumber: function(num){
+                    this.num = num;
+                }
+            },
+            data: {
+                num: 0
+            }
+        })
+    </script>
+</body>
+</html>
