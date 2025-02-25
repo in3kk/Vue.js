@@ -8,7 +8,7 @@
 <body>
     <div id="app">
         <app-header v-bind:propsdata="num"></app-header>
-        <!-- 따로 특별히 명시하지 않아도 인자가 암묵적으로 전달된다. -->
+        <!-- 특별히 명시하지 않아도 인자가 암묵적으로 전달된다. 인자명은 상관없다.-->
         <app-content v-on:pass="passNumber"></app-content>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
