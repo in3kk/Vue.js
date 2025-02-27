@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .warning{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:class="{ warning: isError }">Hello</p>
+        <p v-bind:class="errorTextColor">Hello</p>
+        <!-- isError가 true 면 warning 추가 false면 x -->
+         <!-- computed 속성을 closs binding이나 기본적인 binding에 이용할 수 있다. -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue@1.0.28/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@1.0.1/dist/vuex.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                //cname: 'blue-text',
+                isError: false
+            },
+            computed: {
+                errorTextColor: function() {
+                    return this.isError ? 'warning' : null;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

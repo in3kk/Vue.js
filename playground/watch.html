@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
     <div id="app">
-        <button v-on:click="logText">click me</button>
-        <input type="text" v-on:keyup.enter="logText">
+        <p>{{ num }}</p>
+        <button v-on:click="addNum">increase</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue@1.0.28/dist/vue.js"></script>
@@ -16,13 +14,26 @@
     <script>
         new Vue({
             el: '#app',
-            methods:{
+            data: {
+                num: 10
+            },
+            watch: {
+                num: function(){
+                    this.logText();
+                }
+            },
+            methods: {
+                addNum: function(){
+                    this.num = this.num + 1;
+                },
                 logText: function(){
-                    console.log('clicked');
-
+                    console.log('changed');
                 }
             }
         })
     </script>
+</head>
+<body>
+    
 </body>
 </html>
